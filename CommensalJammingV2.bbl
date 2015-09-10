@@ -1,0 +1,59 @@
+\begin{thebibliography}{1}
+
+\bibitem{willis:07}
+Willis NJ, Griffiths H.
+\newblock Advances in bistatic radar.
+\newblock SciTech Publishing; 2007.
+
+\bibitem{baugh:03}
+Baugh KW, Benner R, Lodwig R. Civil aviation passive coherent location system
+  and method.
+\newblock Google Patents; 2003.
+\newblock EP Patent App. EP20,010,979,880.
+\newblock Available from:
+  \url{https://www.google.com.tr/patents/EP1344083A2?cl=en}.
+
+\bibitem{villano:13}
+Villano M, Colone F, Lombardo P.
+\newblock {Antenna Array for Passive Radar: Configuration Design and Adaptive
+  Approaches to Disturbance Cancellation}.
+\newblock International Journal of Antennas and Propagation. 2013;2013(Article
+  ID 920639):16 pages.
+
+\bibitem{ohagan_irs}
+O'Hagan DW, Ummenhofer M, Kuschel H, Heckenbach J.
+\newblock A Passive/Active Dual Mode Radar Concept.
+\newblock Proceedings of the International Radar Symposium. 2013;p. 136 -- 142.
+
+\bibitem{inggs:09a}
+Inggs MR, Brooker MJ.
+\newblock {Extensible Simulator for Waveform Diversity Testing}.
+\newblock In: Proceedings of the 4th Waveform Diversity and Design Conference;
+  2009. .
+
+\bibitem{Brooker:2008c}
+Brooker MJ.
+\newblock {The Design and Implementation of a Simulator for Multistatic Radar
+  Systems} [Doctoral Thesis].
+\newblock University of Cape Town. Rondebosch, 7701, South Africa; 2008.
+
+\bibitem{maasdorp2014cramer}
+Maasdorp F, Nadjiasngar R, Inggs M.
+\newblock A Cramer Rao analysis on receiver placement in a FM band Commensal
+  Radar system based on Doppler only measurements.
+\newblock In: Radar Conference (Radar), 2014 International. IEEE; 2014. p.
+  1--6.
+
+\bibitem{inggs2014planning}
+Inggs M, Tong C, Nadjiasngar R, Lange G, Mishra A, Maasdorp F.
+\newblock Planning and design phases of a commensal radar system in the FM
+  broadcast band.
+\newblock Aerospace and Electronic Systems Magazine, IEEE. 2014;29(7):50--63.
+
+\bibitem{tong:14}
+Tong C.
+\newblock {A Scalable Real-time Processing Chain for Radar Exploiting
+  Illuminators of Opportunity}.
+\newblock University of Cape Town. Rondebosch, 7701, South Africa; 2014.
+
+\end{thebibliography}

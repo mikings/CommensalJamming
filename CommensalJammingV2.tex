@@ -1,7 +1,8 @@
 %% First version paper for IEEE Radar 2015 Johannesburg
 %% Version 0 by MR Inggs
 %%   23/05/2015
-%% Version 1.0 by MR Inggs responding to reviewer comments
+%% Version 2 by MR Inggs responding to reviewer comments
+
 
 %% bare_conf.tex
 %% V1.3
@@ -501,8 +502,11 @@ The Constantiaberg transmitter radiates isotropically for simplicity. The radar 
 
 	\centering
 	
-	\vspace{1cm}
-	\begin{tabu} to \columnwidth { X r }
+%	\vspace{1cm}
+
+
+\begin{tabu} to \columnwidth{X[2,l] X[3,l]}
+		\hline
   		Item 								& Parameter\\
   		\hline
   		\textbf{Transmitter} 				& \\
@@ -511,29 +515,25 @@ The Constantiaberg transmitter radiates isotropically for simplicity. The radar 
   		Antenna altitude 					& 400~m\\
   		Power 								& 16.4~kW (EIRP for 10~kW dipole)\\
   		Carrier frequency					& 89~MHz\\
-  		Waveform							& Real recorded FM data 204.8 kSps complex sampled\\[3mm]
-  		
+  		Waveform							& Real recorded FM data 204.8 kSps complex sampled\\%[3mm]	
   		\textbf{Receiver} 					& \\
   		Antenna beam pattern 				& Sinc\\
   		Antenna gain 						& 7.2 dBi (see Figure~\ref{fig:AntennaBeam})\\
   		Antenna altitude					& 240~m\\
   		LO error							& ~50 ppb (std. dev. of 0.01~Hz @ 204.8 kSps)\\
   		Noise figure						& 4 dB\\
-  		Digitisation						& 204.8 kSps complex, 16 bit quantisation\\[3mm]
-
+  		Digitisation						& 204.8 kSps complex, 16 bit quantisation\\%[3mm]
 		\textbf{Target} 					& \\
 		Initial altitude					& 10000~m\\
 		Final altitude						& 5000~m\\
 		Velocity							& Constant 200~m/s\\
-		RCS @ 89~MHz						& 46 dBsqm (200~m$^2$, a large airliner)\\[3mm]
-		
+		RCS @ 89~MHz						& 46 dBsqm (200~m$^2$, a large airliner)\\%[3mm]	
 		\textbf{Jammer} 					& \\
 		Antenna beam pattern				& Sinc\\
   		Antenna gain 						& 7.2 dBi (see Figure~\ref{fig:AntennaBeam})\\
   		Transmit power						& 1, 5 and 10~W before antenna gain\\
   		Carrier frequency					& 89 MHz\\
-  		Waveform							& 204.8 kSps complex, random noise\\[3mm]
-  		
+  		Waveform							& 204.8 kSps complex, random noise\\%[3mm]		
   		\textbf{Radar Signal Processing}	& \\
   		DPI cancellation					& 5 range, 5 Doppler bins\\
   		DPI cancellation CPI				& 102400 samples (0.5~s)\\
@@ -542,27 +542,28 @@ The Constantiaberg transmitter radiates isotropically for simplicity. The radar 
   		CFAR algorithm						& GOCA-CFAR\\
   		CFAR window							& 4 guards, 8 reference cells (per side of CUT)\\
   		CFAR dimension						& Doppler (robust against bandwidth fluctuations)\\
-  		CFAR threshold					    & P$_{fa}$ = 10$^{-5}$ (exponential noise model)\\
-				  
+  		CFAR threshold					    & P$_{fa}$ = 10$^{-5}$ (exponential noise model)	\\
+			  
+	\hline
 	\end{tabu}
 	
-	\vspace{1cm}
+%	\vspace{1cm}
 	
 \end{table}
 
 \subsection{Illuminating Signal of Opportunity}
 
-The illuminating signal of opportunity used in the simulation is real FM data recorded at the actual site on which the simulation is based. This site has a favourable interference environment and is relatively free of multipath. The data is stored as a complex baseband stream of IQ data sampled at 204.8 kSps. It is fed into the simulator in this form. The simulator software mixes the baseband data up to a carrier frequency of interest. This way the simulation will produce realistic bandwidth functions in the FM band signal as well as a realistic FM signal ambiguity function. The spectrum  of the FM signal is shown in Figure~\ref{fig:FMFrequencyResponse}.
+The illuminating signal of opportunity used in the simulation is real FM data recorded at the actual site on which the simulation is based. This site has a favourable interference environment and is relatively free of multipath. The data is stored as a complex baseband stream of IQ data sampled at 204.8 kSps, and this is used for all our simulations. It is fed into the simulator in this form. The simulator software mixes the baseband data up to a carrier frequency of interest. This way the simulation will produce realistic bandwidth functions in the FM band signal as well as a realistic FM signal ambiguity function. The spectrum  of the FM signal is shown in Figure~\ref{fig:FMFrequencyResponse}.
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.9\columnwidth]{figs/Simulations/FMSpectrum.png}
+\includegraphics[width=1.0\columnwidth]{figs/Simulations/FMSpectrum.png}
 \caption{The spectrum of the illuminator of opportunity (FM) signal shown at its RF frequency.}
 \label{fig:FMFrequencyResponse}
 \end{center}
 \end{figure}
 
-The equation for processing gain as shown in Equation~\ref{equ:ProcessingGain}, a maximum modulation bandwidth of 204.8 kHz in the 204.8 kSps complex data block would allow for an integration gain of around 60~dB assuming a 4 second integration time, as is consistent with such an FM band radar.
+The equation for processing gain as shown in Equation~\ref{equ:ProcessingGain}, for a 204.8 kSps complex data block would allow for an integration gain of around 60~dB assuming a 4 second integration time, as is consistent with such an FM band radar. We have found that the range walk for passenger aircraft in 4 seconds is small enough.
 
 \begin{align}\label{equ:ProcessingGain}
 G_{int} & = t_{int}  \beta\\
@@ -572,18 +573,18 @@ G_{int} & = t_{int}  \beta\\
 
 where $G_{int}$ is integration gain, $t_{int}$ is the integration time and $\beta$ is the bandwidth of the signal.
 
-Also related to the modulation bandwidth is the range resolution: this relation is governed by Equation~\ref{equ:BistaticRangeRes}. In the case of the simulation which uses a 204.8~kSps (complex) signal and a carrier frequency of 89~MHz, the bin resolutions will be 1463.83~m and 0.25~Hz for bistatic range and bistatic Doppler resolutions respectively. 0.25~Hz is equivalent to 0.84~m/s bistatic range rate at 89~MHz.
+Also related to the modulation bandwidth is the range resolution: this relation is governed by Equation~\ref{equ:BistaticRangeRes}. For the simulation frequency (complex) signal and a carrier frequency of 89~MHz, the bin resolutions will be 1463.83~m and 0.25~Hz for bistatic range and bistatic Doppler resolutions respectively. 0.25~Hz is equivalent to 0.84~m/s bistatic range rate at 89~MHz.
 
 \begin{equation}\label{equ:BistaticRangeRes}
 \Delta R = \frac{c}{\beta \cos{  (\theta / 2 )}} ,
 \end{equation}
 
-where $\Delta R$ is the attainable bistatic range resolution in metres (which applies to the same dimension as bistatic range), $c$ is the speed of light in metres per second, $\beta$ is the instantaneous modulation bandwidth of the signal that is being exploited in Hertz and $\theta$ is the bistatic angle, that is, the angle formed by the transmitter-target and target-receiver line segments in radians. The minimum distance to which two separate targets can be distinguished will therefore be approximately twice that of the bistatic range resolution.
+where $\Delta R$ is the attainable bistatic range resolution in metres (which applies to the same dimension as bistatic range), $c$ is the speed of light in metres per second, $\beta$ is the instantaneous modulation bandwidth of the signal that is being exploited in Hertz and $\theta$ is the bistatic angle, that is, the angle formed by the transmitter-target and target-receiver line segments in radians. 
 
 
 \subsection{Jamming Signal}
 
-The jamming signal is generated as a complex 204.8 kSps random sequence, which, as such occupies the full bandwidth of the target FM channel.  The flat frequency response is characteristic of the noise like time domain signal, occupying 204.8 kHz of bandwidth. In practice the response of the RF frontend would attenuate the edge of the frequency pedestal.
+The jamming signal is generated as a complex  random sequence, which, as such occupies the full bandwidth of the target FM channel.  The flat frequency response is characteristic of the noise like time domain signal, occupying 204.8 kHz of bandwidth. In practice the response of the RF frontend would attenuate the edge of the frequency pedestal.
 
 The auto ambiguity function function of the jammer signal, which is the cross-ambiguity function of the jamming signal with itself, is a ``thumbtack'' response which can be attributed to the critically sampled noise signal that the jammer emits. 
 
@@ -597,7 +598,7 @@ The following runs are performed with the FERS simulator to gauge the effect of 
 \subsubsection{No Jamming}
 To establish a performance baseline a simulation with the target flying its specified trajectory with no interfering signal present.
 
-The target displays a signal to noise ratio in the range of 25~to~30~dB for the duration of manoeuvre. This is consistent with actual measurements taken at the site exploiting the same transmitter and observing large commercial airliners flying along a similar trajectory. Figure~\ref{fig:NoJammingARDFirst} shows the range/Doppler map at the beginning of the target manoeuvre, Figure~\ref{fig:NoJammingARDLast} shows the range/Doppler map at the end of the target manoeuvre and Figure~\ref{fig:NoJammingARDCFAR} shows the CFAR filter detection history for all frames of the target manoeuvre.
+The target displays a signal to noise ratio in the range of 25~to~30~dB for the duration of manoeuvre. This is consistent with actual measurements taken at the site~\cite{inggs2014planning,tong:14} exploiting the same transmitter and observing large commercial airliners flying along a similar trajectory. Figure~\ref{fig:NoJammingARDFirst} shows the range/Doppler map at the beginning of the target manoeuvre, Figure~\ref{fig:NoJammingARDLast} shows the range/Doppler map at the end of the target manoeuvre and Figure~\ref{fig:NoJammingARDCFAR} shows the CFAR filter detection history for all frames of the target manoeuvre.
 
 \begin{figure}[htbp]
 \begin{center}
